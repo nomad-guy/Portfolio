@@ -4,7 +4,6 @@ import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main3.mp4";
-import newsign from "./assets/newsign.png";
 import icon1 from "./assets/icon1.png";
 import icon2 from "./assets/icon2.png";
 import icon3 from "./assets/icon3.png";
@@ -20,27 +19,21 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "github", label: "GITHUB", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "\uD83D\uDC1B", barIcon: icon1, bars: 0, newBars: [], counts: [],
-    links: ["github.com/nomad-guy"],
-    infoBarLabel: "REPOS",
+    id: "github", label: "GITHUB", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "\uD83D\uDC1B", barIcon: icon1,
     stats: [
       { tag: "REP", value: "2",  color: "#6e40c9" },
       { tag: "STG", value: "1",  color: "#bf94ff" },
     ],
   },
   {
-    id: "telegram", label: "TELEGRAM", handle: "@n0mad_guy", href: "https://t.me/n0mad_guy", icon: "\u2708\uFE0F", barIcon: icon2, bars: 3, newBars: [0, 2], counts: ["1.2K", "412", "89"],
-    links: ["t.me/n0mad_guy", "t.me/n0mad_guy/updates", "t.me/n0mad_guy/contact"],
-    infoBarLabel: "MEMBERS",
+    id: "telegram", label: "TELEGRAM", handle: "@n0mad_guy", href: "https://t.me/n0mad_guy", icon: "\u2708\uFE0F", barIcon: icon2,
     stats: [
       { tag: "SUB", value: "1.2K", color: "#26a5e0" },
       { tag: "MSG", value: "342",  color: "#f77737" },
     ],
   },
   {
-    id: "discord", label: "DISCORD", handle: "n0mad_guy", href: "https://discord.gg/n0mad_guy", icon: "\uD83C\uDFCB\uFE0F", barIcon: icon3, bars: 4, newBars: [0, 3], counts: ["5.1K", "2.8K", "1.2K", "412"],
-    links: ["discord.gg/n0mad_guy", "discord.gg/n0mad_guy/events", "discord.gg/n0mad_guy/roles", "discord.gg/n0mad_guy/about"],
-    infoBarLabel: "LINKS",
+    id: "discord", label: "DISCORD", handle: "n0mad_guy", href: "https://discord.gg/n0mad_guy", icon: "\uD83C\uDFCB\uFE0F", barIcon: icon3,
     stats: [
       { tag: "MEM", value: "5.1K", color: "#5865f2" },
       { tag: "ONL", value: "342",  color: "#5865f2" },
@@ -49,10 +42,8 @@ const ITEMS = [
 ];
 
 export default function Socials() {
-  const [active, setActive]               = useState(0);
-  const [mounted, setMounted]             = useState(false);
-  const [activeInfoBar, setActiveInfoBar] = useState(0);
-  const [focus, setFocus]                 = useState("left");
+  const [active, setActive]   = useState(0);
+  const [mounted, setMounted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -65,24 +56,15 @@ export default function Socials() {
     const controller = new AbortController();
 
     const onKey = (e) => {
-      if (focus === "left") {
-        if (e.key === "ArrowUp")    setActive(i => Math.max(0, i - 1));
-        if (e.key === "ArrowDown")  setActive(i => Math.min(ITEMS.length - 1, i + 1));
-        if (e.key === "ArrowRight") { setFocus("right"); setActiveInfoBar(0); }
-        if (e.key === "Enter")      window.open(ITEMS[active].href, "_blank");
-      } else {
-        const barCount = ITEMS[active].bars;
-        if (e.key === "ArrowUp")   setActiveInfoBar(i => Math.max(0, i - 1));
-        if (e.key === "ArrowDown") setActiveInfoBar(i => Math.min(barCount - 1, i + 1));
-        if (e.key === "ArrowLeft") setFocus("left");
-        if (e.key === "Enter")     window.open("https://" + ITEMS[active].links[activeInfoBar], "_blank");
-      }
-      if ((e.key === "ArrowLeft" && focus === "left") || e.key === "Escape" || e.key === "Backspace") navigate(-1);
+      if (e.key === "ArrowUp")   setActive(i => Math.max(0, i - 1));
+      if (e.key === "ArrowDown") setActive(i => Math.min(ITEMS.length - 1, i + 1));
+      if (e.key === "Enter")     window.open(ITEMS[active].href, "_blank");
+      if (e.key === "ArrowLeft" || e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
 
     window.addEventListener("keydown", onKey, { signal: controller.signal });
     return () => controller.abort();
-  }, []);
+  }, [active, navigate]);
 
   return (
     <div id="menu-screen">
@@ -140,28 +122,6 @@ export default function Socials() {
           <span className="sc-nav-arrow right">►</span>
         </div>
       )}
-
-      {mounted && Array.from({ length: ITEMS[active].bars }).map((_, i) => (
-        <div
-          className={`sc-info-bar-wrap${activeInfoBar === i ? " selected" : ""}`}
-          key={`bar-${active}-${i}`}
-          style={{ top: `${155 + i * 52}px`, animationDelay: `${i * 50}ms`, cursor: "pointer" }}
-          onClick={() => {
-            setActiveInfoBar(i);
-            window.open("https://" + ITEMS[active].links[i], "_blank");
-          }}
-          onMouseEnter={() => setActiveInfoBar(i)}
-          title={ITEMS[active].links[i]}
-        >
-          {ITEMS[active].newBars.includes(i) && (
-            <img className="sc-info-bar-new" src={newsign} alt="" />
-          )}
-          <div className="sc-info-bar">
-            <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
-            <span className="sc-info-bar-text">{ITEMS[active].links[i]}</span>
-          </div>
-        </div>
-      ))}
 
       <div className={`sc-footer${mounted ? " mounted" : ""}`}>
         <div className="sc-footer-row"><span className="sc-footer-key">↑↓</span><span>SELECT</span></div>
