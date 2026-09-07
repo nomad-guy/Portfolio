@@ -8,7 +8,7 @@ import ResumePage from './ResumePage'
 import PageTransition from './PageTransition'
 import Socials from './Socials'
 import AboutMe from './AboutMe'
-import SideProjects from './SideProjects'
+import Projects from './Projects'
 import GitHubPage from './GitHubPage'
 import main3 from './assets/main3.mp4'
 import './App.css'
@@ -41,7 +41,7 @@ function AnimatedRoutes() {
           <PageTransition variant="socials"><Socials /></PageTransition>
         } />
         <Route path="/sideproj" element={
-          <PageTransition><SideProjects src={main3} /></PageTransition>
+          <PageTransition><Projects src={main3} /></PageTransition>
         } />
         <Route path="/github" element={
           <PageTransition><GitHubPage src={menuVideo} /></PageTransition>

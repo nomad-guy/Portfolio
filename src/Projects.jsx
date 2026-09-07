@@ -1,72 +1,56 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SKILL_DATA = [
+const ITEMS = [
+  { id: "i", badge: "I", title: "PERSONA3 WEBSITE", subtitle: "React + Vite + Framer", rank: 5 },
+  { id: "ii", badge: "II", title: "PORTFOLIO REBUILD", subtitle: "Frontend / Design", rank: 4 },
+  { id: "iii", badge: "III", title: "STREAM OVERLAY", subtitle: "OBS + Web Design", rank: 3 },
+  { id: "iv", badge: "IV", title: "GAME MOD TOOLS", subtitle: "Scripting / Automation", rank: 2 },
+];  const PROJECT_ROWS = [
+  { index: "01", title: "Main Menu System", status: "Live" },
+  { index: "02", title: "Page Transitions", status: "Live" },
+  { index: "03", title: "Video Backgrounds", status: "Live" },
+  { index: "04", title: "Responsive Layout", status: "WIP" },
+];
+
+const PROJECTS_DETAIL = [
   {
-    id: "i", badge: "I", title: "FLUTTER", subtitle: "DART / APP DEV", rank: 5,
-    accent: "#4255FF",
+    title: "NOCTRA",
+    progress: "1/1",
     rows: [
-      { index: "01", title: "Dart Fundamentals", status: "Expert" },
-      { index: "02", title: "Flutter Widgets", status: "Expert" },
-      { index: "03", title: "State Management", status: "Advanced" },
-      { index: "04", title: "Platform Channels", status: "Intermediate" },
+      { index: "01", title: "Autonomous Audiophile Music Platform", status: "Live" },
+      { index: "02", title: "Lossless Hi-Res FLAC Streaming", status: "Live" },
+      { index: "03", title: "Real-time Bilingual Lyrics (AksharaEngine)", status: "Live" },
+      { index: "04", title: "IEM DSP Tuning & Triple Noir Design", status: "Live" },
     ],
     bullets: [
-      "- Built cross-platform mobile apps with Flutter & Dart",
-      "- Custom animations, gestures, and reactive UI flows",
-      "- Firebase / REST integrations and offline-first patterns",
+      "- Autonomous privacy-sovereign music platform",
+      "- Lossless Hi-Res FLAC streaming on Android, Windows, Linux & iOS",
+      "- AksharaEngine real-time bilingual lyrics subtitles",
+      "- IEM DSP tuning with Triple Noir design language",
     ],
   },
   {
-    id: "ii", badge: "II", title: "ML / DEEP LEARNING", subtitle: "PYTORCH / TENSORFLOW", rank: 4,
-    accent: "#FF6B35",
+    title: "PORTFOLIO",
+    progress: "1/1",
     rows: [
-      { index: "01", title: "Neural Networks", status: "Advanced" },
-      { index: "02", title: "Computer Vision", status: "Advanced" },
-      { index: "03", title: "NLP / Transformers", status: "Intermediate" },
-      { index: "04", title: "Model Deployment", status: "Intermediate" },
+      { index: "01", title: "React 19 + Vite + React Router v7", status: "Live" },
+      { index: "02", title: "Framer Motion Page Transitions", status: "Live" },
+      { index: "03", title: "Persona 3 Aesthetic UI Design", status: "Live" },
+      { index: "04", title: "GitHub API Repo Integration", status: "Live" },
     ],
     bullets: [
-      "- Trained custom models for classification and vision tasks",
-      "- Worked with CNNs, RNNs, and transformer-based architectures",
-      "- Experimented with fine-tuning pretrained models",
-    ],
-  },
-  {
-    id: "iii", badge: "III", title: "AI / ML AGENTS", subtitle: "AGENTIC ENGINEERING", rank: 5,
-    accent: "#00C853",
-    rows: [
-      { index: "01", title: "LLM Integration", status: "Advanced" },
-      { index: "02", title: "Agent Orchestration", status: "Advanced" },
-      { index: "03", title: "Tool Use / Functions", status: "Intermediate" },
-      { index: "04", title: "RAG Pipelines", status: "Intermediate" },
-    ],
-    bullets: [
-      "- Designed agentic workflows with LLMs and tool calling",
-      "- Built retrieval-augmented generation pipelines",
-      "- Explored autonomous agent planning and memory patterns",
-    ],
-  },
-  {
-    id: "iv", badge: "IV", title: "BACKEND", subtitle: "API / SERVICES / DB", rank: 2,
-    accent: "#FFD600",
-    rows: [
-      { index: "01", title: "REST APIs", status: "Expert" },
-      { index: "02", title: "Databases / SQL", status: "Advanced" },
-      { index: "03", title: "Auth / Security", status: "Intermediate" },
-      { index: "04", title: "DevOps / Deploy", status: "Intermediate" },
-    ],
-    bullets: [
-      "- Designed and shipped backend services and REST APIs",
-      "- Modeled data with SQL and NoSQL stores",
-      "- Containerized services and set up CI/CD flows",
+      "- React 19 with Vite and React Router v7",
+      "- Framer Motion animated page transitions",
+      "- Persona 3 inspired UI with custom card designs",
+      "- Live GitHub repos fetched from API",
     ],
   },
 ];
 
-export default function ResumePage({ src }) {
-  const navigate = useNavigate();      const [active, setActive] = useState(0);
-
+export default function SideProjects({ src }) {
+  const navigate = useNavigate();
+  const [active, setActive] = useState(1);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -77,7 +61,7 @@ export default function ResumePage({ src }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "ArrowUp") setActive((i) => Math.max(0, i - 1));
-      if (e.key === "ArrowDown") setActive((i) => Math.min(SKILL_DATA.length - 1, i + 1));
+      if (e.key === "ArrowDown") setActive((i) => Math.min(ITEMS.length - 1, i + 1));
       if (e.key === "ArrowLeft") navigate(-1);
       if (e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
@@ -180,7 +164,7 @@ export default function ResumePage({ src }) {
         }
         .resume-card-wrap.active .resume-card {
           background: #ffffff;
-          box-shadow: 10px 8px 0 #d63232;
+          box-shadow: 10px 8px 0 #0f1760;
           transform: translateX(6px);
         }
 
@@ -293,25 +277,25 @@ export default function ResumePage({ src }) {
 
         .resume-detail-panel {
           position: absolute;
-          top: 9.5vh;
-          right: 4.5vw;
-          width: min(39vw, 620px);
-          min-height: 74vh;
+          top: 9vh;
+          right: 4vw;
+          width: min(42vw, 680px);
+          min-height: 70vh;
           z-index: 12;
-          padding: 22px 24px 24px 24px;
+          padding: 20px 22px 22px 22px;
           background: linear-gradient(180deg, rgba(10, 24, 60, 0.97) 0%, rgba(5, 13, 57, 0.97) 100%);
           clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
           box-shadow:
             inset 0 0 0 1px rgba(133, 244, 255, 0.16),
             16px 16px 0 rgba(0, 6, 30, 0.55);
-          overflow: hidden;
+          overflow: visible;
         }
         .resume-detail-panel::before {
           content: "";
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(135deg, rgba(133, 244, 255, 0.08) 0 15%, transparent 15% 100%),
+            linear-gradient(135deg, rgba(255,100,100,0.08) 0 15%, transparent 15% 100%),
             linear-gradient(180deg, rgba(255,255,255,0.05), transparent 24%);
           pointer-events: none;
         }
@@ -392,7 +376,7 @@ export default function ResumePage({ src }) {
         }
         .resume-detail-bottom {
           position: relative;
-          margin-top: 22px;
+          margin-top: 18px;
           padding: 18px;
           background: rgba(8, 16, 68, 0.97);
           clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
@@ -416,15 +400,14 @@ export default function ResumePage({ src }) {
           line-height: 1.15;
           color: #edfaff;
         }
-
       `}</style>
 
       <div className="resume-overlay">
         <div className="resume-stack">
-          <div className={`resume-list-tag${mounted ? " mounted" : ""}`}>LIST</div>
-          {SKILL_DATA.map((item, index) => (
+          <div className={`resume-list-tag${mounted ? " mounted" : ""}`}>PROJECTS</div>
+          {PROJECTS_DETAIL.map((proj, index) => (
             <div
-              key={item.id}
+              key={proj.title}
               className={`resume-card-wrap${active === index ? " active" : ""}${mounted ? " mounted" : ""}`}
               style={{ transitionDelay: `${index * 55}ms` }}
               onMouseEnter={() => {
@@ -436,34 +419,34 @@ export default function ResumePage({ src }) {
             >
               <div className="resume-card">
                 <div className="resume-badge">
-                  <div className="resume-badge-text">{item.badge}</div>
+                  <div className="resume-badge-text">{proj.badge}</div>
                 </div>
                 <div className="resume-card-inner">
-                  <div className="resume-title">{item.title}</div>
+                  <div className="resume-title">{proj.title}</div>
                   <div className="resume-rank">
                     <div className="resume-rank-label">RANK</div>
-                    <div className="resume-rank-number">{item.rank}</div>
+                    <div className="resume-rank-number">{proj.rank}</div>
                   </div>
                 </div>
                 <div className="resume-subtitle-bar">
-                  <div className="resume-subtitle">{item.subtitle}</div>
+                  <div className="resume-subtitle">{proj.subtitle}</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {SKILL_DATA.map((skill, idx) => (
+        {PROJECTS_DETAIL.map((proj, idx) => (
           active === idx && (
-            <div className="resume-detail-panel" key={skill.id}>
+            <div className="resume-detail-panel" key={proj.title}>
               <div className="resume-detail-top">
                 <div className="resume-detail-top-index">0{idx + 1}</div>
-                <div className="resume-detail-top-title">{skill.title}</div>
-                <div className="resume-detail-top-progress">{skill.rank}/5</div>
+                <div className="resume-detail-top-title">{proj.title}</div>
+                <div className="resume-detail-top-progress">{proj.progress}</div>
               </div>
 
               <div className="resume-detail-list">
-                {skill.rows.map((row) => (
+                {proj.rows.map((row) => (
                   <div className="resume-detail-row" key={row.index}>
                     <div className="resume-detail-row-index">{row.index}</div>
                     <div className="resume-detail-row-title">{row.title}</div>
@@ -475,10 +458,15 @@ export default function ResumePage({ src }) {
               <div className="resume-detail-bottom">
                 <div className="resume-detail-bottom-title">DETAILS</div>
                 <div className="resume-detail-bullets">
-                  {skill.bullets.map((b, i) => (
+                  {proj.bullets.map((b, i) => (
                     <div className="resume-detail-bullet" key={i}>{b}</div>
                   ))}
                 </div>
+                {proj.noctraUrl && (
+                  <div className="resume-detail-repo">
+                    → <a href={proj.noctraUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#4298f5' }}>{proj.noctraUrl}</a>
+                  </div>
+                )}
               </div>
             </div>
           )
