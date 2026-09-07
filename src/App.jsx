@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import menuVideo from "./assets/Mainn.mp4";
 import bgm from "./assets/bgm.mp3";
@@ -25,11 +25,12 @@ function preloadAll() {
 const main2 = new URL("./assets/main2.mp4", import.meta.url).href;
 const main3 = new URL("./assets/main3.mp4", import.meta.url).href;
 
-function MenuScreen({ navigate }) {
+function MenuScreen() {
+  const navigate = useNavigate();
   return (
     <div id="menu-screen">
       <video src={menuVideo} autoPlay loop muted playsInline />
-      <P3Menu onNavigate={(page) => navigate?.(`/${page}`)} />
+      <P3Menu onNavigate={(page) => navigate(`/${page}`)} />
     </div>
   );
 }
