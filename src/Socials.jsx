@@ -27,17 +27,9 @@ const ITEMS = [
   },
   {
     id: "telegram", label: "TELEGRAM", handle: "@n0mad_guy", href: "https://t.me/n0mad_guy", icon: "\u2708\uFE0F", barIcon: icon2,
-    stats: [
-      { tag: "SUB", value: "1.2K", color: "#26a5e0" },
-      { tag: "MSG", value: "342",  color: "#f77737" },
-    ],
   },
   {
     id: "discord", label: "DISCORD", handle: "n0mad_guy", href: "https://discord.gg/n0mad_guy", icon: "\uD83C\uDFCB\uFE0F", barIcon: icon3,
-    stats: [
-      { tag: "MEM", value: "5.1K", color: "#5865f2" },
-      { tag: "ONL", value: "342",  color: "#5865f2" },
-    ],
   },
 ];
 
@@ -93,20 +85,22 @@ export default function Socials() {
                     <div className="sc-label">{item.label}</div>
                   </div>
                 </div>
-                <div className="sc-stats">
-                  {item.stats.map(s => (
-                    <div className="sc-stat" key={s.tag}>
-                      <div className="sc-stat-top">
-                        <span className="sc-stat-tag" style={{ color: s.color, borderColor: s.color }}>{s.tag}</span>
-                        <span className="sc-stat-num">{s.value}</span>
+                {item.stats?.length > 0 && (
+                  <div className="sc-stats">
+                    {item.stats.map(s => (
+                      <div className="sc-stat" key={s.tag}>
+                        <div className="sc-stat-top">
+                          <span className="sc-stat-tag" style={{ color: s.color, borderColor: s.color }}>{s.tag}</span>
+                          <span className="sc-stat-num">{s.value}</span>
+                        </div>
+                        <div className="sc-stat-bars">
+                          <div className="sc-stat-bar-color" style={{ background: s.color }} />
+                          <div className="sc-stat-bar-black" />
+                        </div>
                       </div>
-                      <div className="sc-stat-bars">
-                        <div className="sc-stat-bar-color" style={{ background: s.color }} />
-                        <div className="sc-stat-bar-black" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
