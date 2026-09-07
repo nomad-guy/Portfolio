@@ -59,23 +59,21 @@ export default function P3Menu({ onNavigate }) {
             const opacity = isActive ? 1 : Math.max(0.5, 1 - dist * 0.2);
             const estW = item.label.length * item.fontSize * 0.6 + 80;
             const estH = item.fontSize * 0.94;
-            const clipFn = CLIP_SHAPES[i] ?? CLIP_SHAPES[0];
-
-            return (
-              <a
+            const clipFn = CLIP_SHAPES[i] ?? CLIP_SHAPES[0];            return (
+              <div
                 key={item.id}
-                href="#"
                 className={`p3-row ${isActive ? "active" : ""} ${mounted ? "mounted" : ""}`}
                 style={{
                   marginRight: item.offsetX,
                   marginTop: item.offsetY,
                   transitionDelay: mounted ? `${i * 80}ms` : "0ms",
+                  cursor: 'pointer',
                 }}
-                onClick={(e) => { e.preventDefault(); if (item.external) window.open('https://github.com/nomad-guy', '_blank'); else onNavigate?.(item.page); }}
                 onMouseEnter={() => activate(i)}
+                role="button"
+                tabIndex={0}
                 aria-current={isActive ? "page" : undefined}
               >
-                <div className="p3-glow" />
                 <div
                   className="p3-skew-wrap"
                   style={{ transform: `skewX(${item.skew}deg) skewY(${item.skewY}deg)` }}
@@ -97,23 +95,34 @@ export default function P3Menu({ onNavigate }) {
                       clipPath: clipFn(estW, estH),
                       transform: `translateY(-50%) scaleX(${isActive ? 1 : 0})`,
                     }}
-                  />
-                  <div className="p3-label-wrap" style={{ opacity }}>
-                    <span className="p3-label-base p3-label-dark" style={{ fontSize: item.fontSize }}>
-                      {item.label}
-                    </span>
-                    <span
-                      className="p3-label-base p3-label-bright"
-                      style={{
-                        fontSize: item.fontSize,
-                        clipPath: clipFn(estW, estH),
-                      }}
-                    >
-                      {item.label}
-                    </span>
-                  </div>
+                  />                <div
+                  className="p3-label-wrap"
+                  style={{ opacity }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (item.external) {
+                      window.open('https://github.com/nomad-guy', '_blank');
+                    } else {
+                      onNavigate?.(item.page);
+                    }
+                  }}
+                >
+                  <span className="p3-label-base p3-label-dark" style={{ fontSize: item.fontSize }}>
+                    {item.label}
+                  </span>
+                  <span
+                    className="p3-label-base p3-label-bright"
+                    style={{
+                      fontSize: item.fontSize,
+                      clipPath: clipFn(estW, estH),
+                    }}
+                  >
+                    {item.label}
+                  </span>
                 </div>
-              </a>
+                </div>
+                <div className="p3-glow" />
+              </div>
             );
           })}
         </nav>
