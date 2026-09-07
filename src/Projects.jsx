@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ProjectsCardList } from "./components/projects/ProjectsCardList";
 import { ProjectsDetailPanel } from "./components/projects/ProjectsDetailPanel";
 import "./styles/projects/Projects.css";
+
 
 const PROJECTS_DATA = [
   {
@@ -44,6 +46,7 @@ const PROJECTS_DATA = [
 ];
 
 export default function Projects({ src }) {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
 
@@ -61,13 +64,13 @@ export default function Projects({ src }) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [navigate]);
 
   return (
     <div id="menu-screen">
-      <video src={src} autoPlay loop muted playsInline />
+      <video src={src} autoPlay loop muted playsInline preload="metadata" />
       <div className="resume-entry-mask" aria-hidden="true">
-        <video className="resume-entry-video" src={src} autoPlay loop muted playsInline />
+        <video className="resume-entry-video" src={src} autoPlay loop muted playsInline preload="metadata" />
       </div>
       <div className="resume-overlay">
         <ProjectsCardList

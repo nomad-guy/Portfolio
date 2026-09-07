@@ -1,4 +1,4 @@
-export function ProjectsDetailPanel({ data, active, index }) {
+export function ProjectsDetailPanel({ data, index }) {
   const proj = data[index];
   if (!proj) return null;
 

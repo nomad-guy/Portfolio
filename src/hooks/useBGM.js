@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 
-export function useBGM(src) {
+export function useBGM() {
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(true);
 

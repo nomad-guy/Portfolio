@@ -86,9 +86,9 @@ export default function ResumePage({ src }) {
 
   return (
     <div id="menu-screen">
-      <video src={src} autoPlay loop muted playsInline />
+      <video src={src} autoPlay loop muted playsInline preload="metadata" />
       <div className="resume-entry-mask" aria-hidden="true">
-        <video className="resume-entry-video" src={src} autoPlay loop muted playsInline />
+        <video className="resume-entry-video" src={src} autoPlay loop muted playsInline preload="metadata" />
       </div>
       <div className="resume-overlay">
         <ResumeCardList
@@ -117,4 +117,4 @@ export default function ResumePage({ src }) {
       </div>
     </div>
   );
-}
+}

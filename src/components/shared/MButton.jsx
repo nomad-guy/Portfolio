@@ -1,28 +1,10 @@
-import { useBGM } from "../../hooks/useBGM";
+import "./MButton.css";
 
-export function MButton({ bgmSrc }) {
-  const { muted } = useBGM(bgmSrc);
+export function MButton({ muted }) {
   return (
-    <div style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 6,
-    }}>
-      <span style={{
-        border: "1px solid rgba(255,255,255,0.12)",
-        borderRadius: 3,
-        padding: "1px 5px",
-        fontSize: 10,
-      }}>
-        M
-      </span>
-      <span style={{
-        color: muted ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.7)",
-        fontSize: 11,
-        letterSpacing: 2,
-      }}>
-        {muted ? "MUTED" : "♪ ON"}
-      </span>
+    <div className="m-button">
+      <span className="m-button-key">M</span>
+      <span className="m-button-label">{muted ? "MUTED" : "\u266A ON"}</span>
     </div>
   );
 }

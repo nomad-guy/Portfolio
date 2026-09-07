@@ -24,8 +24,8 @@ const ITEMS = [
     links: ["github.com/nomad-guy"],
     infoBarLabel: "REPOS",
     stats: [
-      { tag: "REP", value: "120", color: "#6e40c9" },
-      { tag: "STG", value: "34",  color: "#bf94ff" },
+      { tag: "REP", value: "2",  color: "#6e40c9" },
+      { tag: "STG", value: "1",  color: "#bf94ff" },
     ],
   },
   {
@@ -56,11 +56,14 @@ export default function Socials() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const controller = new AbortController();
     const t = setTimeout(() => setMounted(true), 60);
-    return () => clearTimeout(t);
+    return () => { clearTimeout(t); controller.abort(); };
   }, []);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const onKey = (e) => {
       if (focus === "left") {
         if (e.key === "ArrowUp")    setActive(i => Math.max(0, i - 1));
@@ -76,9 +79,10 @@ export default function Socials() {
       }
       if ((e.key === "ArrowLeft" && focus === "left") || e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [active, navigate, focus]);
+
+    window.addEventListener("keydown", onKey, { signal: controller.signal });
+    return () => controller.abort();
+  }, []);
 
   return (
     <div id="menu-screen">
@@ -150,8 +154,8 @@ export default function Socials() {
           )}
           <div className="sc-info-bar">
             <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
-            <span className="sc-info-bar-text">{ITEMS[active].links[i].slice(0, 10)}...</span>
-            <span className="sc-info-bar-box">{ITEMS[active].infoBarLabel || "VIEWS"}</span>
+            <span className="sc-info-bar-text">{ITEMS[active].links[i]}</span>
+            <span className="sc-info-bar-box">{ITEMS[active].infoBarLabel}</span>
             <span className="sc-info-bar-count">{ITEMS[active].counts[i]}</span>
           </div>
         </div>

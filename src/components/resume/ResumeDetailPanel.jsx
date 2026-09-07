@@ -1,4 +1,4 @@
-export function ResumeDetailPanel({ data, active, index }) {
+export function ResumeDetailPanel({ data, index }) {
   const skill = data[index];
   if (!skill) return null;
 

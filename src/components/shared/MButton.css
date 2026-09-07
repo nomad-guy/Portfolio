@@ -1,0 +1,20 @@
+.m-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.m-button-key {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-family: 'Anton', sans-serif;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 1;
+}
+.m-button-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2;
+  color: rgba(255,255,255,0.5);
+}
