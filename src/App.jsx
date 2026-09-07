@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import menuVideo from "./assets/Mainn.mp4";
 import main2 from "./assets/main2.mp4";
@@ -49,16 +49,16 @@ export default function App() {
   const { audioRef, muted } = useBGM(bgm);
 
   return (
-    <BrowserRouter>
+    <>
       <audio ref={audioRef} src={bgm} loop muted={muted} />
       <Routes>
         <Route path="/" element={
           <PageTransition>
-            <MenuScreen navigate={null} />
+            <MenuScreen />
           </PageTransition>
         } />
       </Routes>
       <AnimatedRoutes />
-    </BrowserRouter>
+    </>
   );
 }
