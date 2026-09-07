@@ -69,6 +69,15 @@ export default function P3Menu({ onNavigate }) {
                   transitionDelay: mounted ? `${i * 80}ms` : "0ms",
                   cursor: 'pointer',
                 }}
+                onClick={(e) => {
+                  if (e.target.closest(".p3-label-wrap")) return; // label handler does it
+                  if (isActive) {
+                    if (item.external) window.open("https://github.com/nomad-guy", "_blank");
+                    else onNavigate?.(item.page);
+                  } else {
+                    activate(i);
+                  }
+                }}
                 onMouseEnter={() => activate(i)}
                 role="button"
                 tabIndex={0}

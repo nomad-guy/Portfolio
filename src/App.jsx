@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import menuVideo from "./assets/Mainn.mp4";
 import bgm from "./assets/bgm.mp3";
@@ -80,6 +80,7 @@ export default function App() {
             <MenuScreen />
           </PageTransition>
         } />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <AnimatedRoutes />
     </>
