@@ -90,7 +90,7 @@ export default function App() {
       <AnimatedRoutes />
       <div style={{
         position: 'fixed',
-        bottom: 52,
+        bottom: 70,
         right: 28,
         zIndex: 9999,
         display: 'flex',
