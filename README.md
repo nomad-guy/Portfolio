@@ -4,7 +4,7 @@ A React + Vite portfolio website with a Persona 3 aesthetic.
 
 ## Live
 
-http://localhost:5173
+https://nomad-guy.vercel.app/
 
 ## Repo
 
@@ -16,8 +16,9 @@ https://github.com/nomad-guy/Portfolio
 - `/about` — About Me
 - `/resume` — Resume (Flutter / ML / AI Agents / Backend)
 - `/socials` — Socials (GitHub, Telegram, Discord)
-- `/sideproj` — Side Projects
-- `/github` — GitHub repos (fetched live from API)
+- `/projects` — Projects (Noctra, Portfolio)
+
+GitHub opens directly via the menu's GITHUB LINK item.
 
 ## Run
 

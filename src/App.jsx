@@ -57,7 +57,7 @@ function AnimatedRoutes() {
             <Suspense fallback={<ScreenLoader />}><Socials /></Suspense>
           </PageTransition>
         } />
-        <Route path="/sideproj" element={
+        <Route path="/projects" element={
           <PageTransition>
             <Suspense fallback={<ScreenLoader />}><Projects src={main3} /></Suspense>
           </PageTransition>
