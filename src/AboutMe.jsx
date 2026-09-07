@@ -18,7 +18,7 @@ const MAIN_IMAGES = [mainm, mainm2, mainf];
 const REVEAL_CONTENT = [
   {
     upper: ["nomad-guy"],
-    lower: "portfolio · full-stack dev · always shipping",
+    lower: "full-stack dev · always shipping",
   },
   {
     upper: [
