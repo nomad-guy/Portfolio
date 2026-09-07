@@ -19,27 +19,27 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "twitch", label: "TWITCH", handle: "@yourname", href: "https://twitch.tv/yourname", icon: "🎮", barIcon: icon1, bars: 1, newBars: [0], counts: ["56"],
-    links: ["twitch.tv/videos/2041837265"],
+    id: "github", label: "GITHUB", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "🐙", barIcon: icon1, bars: 0, newBars: [], counts: [],
+    links: ["github.com/nomad-guy"],
     stats: [
-      { tag: "FOL", value: "1.2K", color: "#9147ff" },
-      { tag: "VWR", value: "042",  color: "#bf94ff" },
+      { tag: "REP", value: "120", color: "#6e40c9" },
+      { tag: "STG", value: "34",  color: "#bf94ff" },
     ],
   },
   {
-    id: "instagram", label: "INSTAGRAM", handle: "@yourhandle", href: "https://instagram.com/yourhandle", icon: "📷", barIcon: icon2, bars: 5, newBars: [1, 2], counts: ["3.4M", "2.5M", "676K", "412K", "198K"],
-    links: ["instagram.com/p/C4xQmRrNk2a", "instagram.com/p/C3wLpBsOj7f", "instagram.com/reel/C2vKoArMi6e", "instagram.com/p/C1uJnZqLh5d", "instagram.com/reel/C0tImYpKg4c"],
+    id: "telegram", label: "TELEGRAM", handle: "@n0mad_guy", href: "https://t.me/n0mad_guy", icon: "✈️", barIcon: icon2, bars: 3, newBars: [0, 2], counts: ["1.2K", "412", "89"],
+    links: ["t.me/n0mad_guy", "t.me/n0mad_guy/updates", "t.me/n0mad_guy/contact"],
     stats: [
-      { tag: "FOL", value: "3.4K", color: "#e1306c" },
-      { tag: "PST", value: "128",  color: "#f77737" },
+      { tag: "SUB", value: "1.2K", color: "#26a5e0" },
+      { tag: "MSG", value: "342",  color: "#f77737" },
     ],
   },
   {
-    id: "tiktok", label: "TIKTOK", handle: "@yourhandle", href: "https://tiktok.com/@yourhandle", icon: "🎵", barIcon: icon3, bars: 7, newBars: [0, 3, 5, 6], counts: ["5.1M", "3.7M", "2.2M", "1.4M", "831K", "490K", "217K"],
-    links: ["tiktok.com/@yourhandle/video/7318492016374859054", "tiktok.com/@yourhandle/video/7305837261940183342", "tiktok.com/@yourhandle/video/7291046385720348974", "tiktok.com/@yourhandle/video/7278392047163820334", "tiktok.com/@yourhandle/video/7264819203847165742", "tiktok.com/@yourhandle/video/7251047382916430126", "tiktok.com/@yourhandle/video/7237294018463851822"],
+    id: "discord", label: "DISCORD", handle: "n0mad_guy", href: "https://discord.gg/n0mad_guy", icon: "🎮", barIcon: icon3, bars: 4, newBars: [0, 3], counts: ["5.1K", "2.8K", "1.2K", "412"],
+    links: ["discord.gg/n0mad_guy", "discord.gg/n0mad_guy/events", "discord.gg/n0mad_guy/roles", "discord.gg/n0mad_guy/about"],
     stats: [
-      { tag: "FOL", value: "8.9K", color: "#00f2ea" },
-      { tag: "LKS", value: "52K",  color: "#ff0050" },
+      { tag: "MEM", value: "5.1K", color: "#5865f2" },
+      { tag: "ONL", value: "342",  color: "#5865f2" },
     ],
   },
 ];

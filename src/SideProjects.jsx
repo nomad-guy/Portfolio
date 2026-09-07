@@ -6,13 +6,78 @@ const ITEMS = [
   { id: "ii", badge: "II", title: "PORTFOLIO REBUILD", subtitle: "Frontend / Design", rank: 4 },
   { id: "iii", badge: "III", title: "STREAM OVERLAY", subtitle: "OBS + Web Design", rank: 3 },
   { id: "iv", badge: "IV", title: "GAME MOD TOOLS", subtitle: "Scripting / Automation", rank: 2 },
-];
-
-const PROJECT_ROWS = [
+];  const PROJECT_ROWS = [
   { index: "01", title: "Main Menu System", status: "Live" },
   { index: "02", title: "Page Transitions", status: "Live" },
   { index: "03", title: "Video Backgrounds", status: "Live" },
   { index: "04", title: "Responsive Layout", status: "WIP" },
+];
+
+const PROJECTS_DETAIL = [
+  {
+    title: "PERSONA3 WEBSITE",
+    progress: "5/5",
+    rows: [
+      { index: "01", title: "React 19 + Vite + React Router", status: "Live" },
+      { index: "02", title: "Framer Motion Page Transitions", status: "Live" },
+      { index: "03", title: "Persona 3 Aesthetic UI Design", status: "Live" },
+      { index: "04", title: "Custom Video Backgrounds Per Page", status: "Live" },
+    ],
+    bullets: [
+      "- React 19 + Vite with React Router v7 routing",
+      "- Framer Motion animated page transitions",
+      "- Persona 3 inspired UI with custom card designs",
+      "- Different video background on each page",
+    ],
+  },
+  {
+    title: "PORTFOLIO REBUILD",
+    progress: "4/5",
+    rows: [
+      { index: "01", title: "Responsive Layout System", status: "Live" },
+      { index: "02", title: "Custom Card Components", status: "Live" },
+      { index: "03", title: "CSS Animations & Effects", status: "Live" },
+      { index: "04", title: "Theme Color System", status: "WIP" },
+    ],
+    bullets: [
+      "- Fully responsive layout for all screen sizes",
+      "- Reusable card components with clip-path designs",
+      "- Smooth CSS transitions and keyframe animations",
+      "- Consistent color palette across all pages",
+    ],
+  },
+  {
+    title: "STREAM OVERLAY",
+    progress: "3/5",
+    rows: [
+      { index: "01", title: "OBS Webhook Integration", status: "Live" },
+      { index: "02", title: "Real-time Viewer Stats", status: "Live" },
+      { index: "03", title: "Scene Transition Effects", status: "WIP" },
+      { index: "04", title: "Custom Overlay Themes", status: "WIP" },
+    ],
+    bullets: [
+      "- OBS webhook integration for live data",
+      "- Real-time viewer count and stats display",
+      "- Animated scene transition overlays",
+      "- Multiple theme options for different vibes",
+    ],
+  },
+  {
+    title: "GAME MOD TOOLS",
+    progress: "2/5",
+    rows: [
+      { index: "01", title: "Scripting Automation", status: "Live" },
+      { index: "02", title: "Toolchain Setup", status: "Live" },
+      { index: "03", title: "Mod Packaging", status: "WIP" },
+      { index: "04", title: "Distribution Pipeline", status: "WIP" },
+    ],
+    bullets: [
+      "- Python/JS scripting for mod automation",
+      "- Custom toolchain for building mods",
+      "- Automated mod packaging pipeline",
+      "- Distribution and versioning system",
+    ],
+  },
 ];
 
 export default function SideProjects({ src }) {
@@ -410,35 +475,36 @@ export default function SideProjects({ src }) {
           ))}
         </div>
 
-        {active === 0 && (
-          <div className="resume-detail-panel">
-            <div className="resume-detail-top">
-              <div className="resume-detail-top-index">01</div>
-              <div className="resume-detail-top-title">PERSONA3 WEBSITE</div>
-              <div className="resume-detail-top-progress">5/5</div>
-            </div>
+        {PROJECTS_DETAIL.map((proj, idx) => (
+          active === idx && (
+            <div className="resume-detail-panel" key={proj.title}>
+              <div className="resume-detail-top">
+                <div className="resume-detail-top-index">0{idx + 1}</div>
+                <div className="resume-detail-top-title">{proj.title}</div>
+                <div className="resume-detail-top-progress">{proj.progress}</div>
+              </div>
 
-            <div className="resume-detail-list">
-              {PROJECT_ROWS.map((row) => (
-                <div className="resume-detail-row" key={row.index}>
-                  <div className="resume-detail-row-index">{row.index}</div>
-                  <div className="resume-detail-row-title">{row.title}</div>
-                  <div className="resume-detail-status">{row.status}</div>
+              <div className="resume-detail-list">
+                {proj.rows.map((row) => (
+                  <div className="resume-detail-row" key={row.index}>
+                    <div className="resume-detail-row-index">{row.index}</div>
+                    <div className="resume-detail-row-title">{row.title}</div>
+                    <div className="resume-detail-status">{row.status}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="resume-detail-bottom">
+                <div className="resume-detail-bottom-title">DETAILS</div>
+                <div className="resume-detail-bullets">
+                  {proj.bullets.map((b, i) => (
+                    <div className="resume-detail-bullet" key={i}>{b}</div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            <div className="resume-detail-bottom">
-              <div className="resume-detail-bottom-title">DETAILS</div>
-              <div className="resume-detail-bullets">
-                <div className="resume-detail-bullet">- React 19 + Vite + React Router v7</div>
-                <div className="resume-detail-bullet">- Framer Motion page transitions</div>
-                <div className="resume-detail-bullet">- Persona 3 aesthetic UI design</div>
-                <div className="resume-detail-bullet">- Custom video backgrounds per page</div>
               </div>
             </div>
-          </div>
-        )}
+          )
+        ))}
 
       </div>
     </div>
