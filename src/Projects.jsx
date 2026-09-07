@@ -50,6 +50,7 @@ export default function Projects({ src }) {
   const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -58,8 +59,8 @@ export default function Projects({ src }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "ArrowUp") setActive((i) => Math.max(0, i - 1));
-      if (e.key === "ArrowDown") setActive((i) => Math.min(PROJECTS_DATA.length - 1, i + 1));
+      if (e.key === "ArrowUp") { setHovered(true); setActive((i) => Math.max(0, i - 1)); }
+      if (e.key === "ArrowDown") { setHovered(true); setActive((i) => Math.min(PROJECTS_DATA.length - 1, i + 1)); }
       if (e.key === "ArrowLeft") navigate(-1);
       if (e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
@@ -79,8 +80,9 @@ export default function Projects({ src }) {
           active={active}
           mounted={mounted}
           onSelect={setActive}
+          onHoverChange={setHovered}
         />
-        {PROJECTS_DATA.map((proj, idx) => (
+        {hovered && PROJECTS_DATA.map((proj, idx) => (
           active === idx && <ProjectsDetailPanel key={proj.title} data={PROJECTS_DATA} active={active} index={idx} />
         ))}
         <div className={`resume-hints${mounted ? "" : " muted"}`}>

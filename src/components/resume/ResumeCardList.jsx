@@ -1,13 +1,19 @@
-export function ResumeCardList({ data, active, mounted, onSelect }) {
+export function ResumeCardList({ data, active, mounted, onSelect, onHoverChange }) {
   return (
-    <div className="resume-stack">
+    <div
+      className="resume-stack"
+      onMouseLeave={() => onHoverChange?.(false)}
+    >
       <div className={`resume-list-tag${mounted ? " mounted" : ""}`}>LIST</div>
       {data.map((item, index) => (
         <div
           key={item.id}
           className={`resume-card-wrap${active === index ? " active" : ""}${mounted ? " mounted" : ""}`}
           style={{ transitionDelay: `${index * 55}ms` }}
-          onMouseEnter={() => onSelect(index)}
+          onMouseEnter={() => {
+            onSelect(index);
+            onHoverChange?.(true);
+          }}
           onClick={() => onSelect(index)}
         >
           <div className="resume-card">
