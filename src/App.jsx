@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import menuVideo from "./assets/Mainn.mp4";
@@ -13,15 +13,6 @@ const AboutMe = lazy(() => import("./AboutMe"));
 const ResumePage = lazy(() => import("./ResumePage"));
 const Socials = lazy(() => import("./Socials"));
 const Projects = lazy(() => import("./Projects"));
-
-function preloadAll() {
-  Promise.all([
-    import("./AboutMe"),
-    import("./ResumePage"),
-    import("./Socials"),
-    import("./Projects"),
-  ]).catch(() => {});
-}
 
 const main2 = new URL("./assets/main2.mp4", import.meta.url).href;
 const main3 = new URL("./assets/main3.mp4", import.meta.url).href;
@@ -78,8 +69,6 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  useEffect(() => { preloadAll(); }, []);
-
   const { audioRef, muted } = useBGM();
 
   return (
