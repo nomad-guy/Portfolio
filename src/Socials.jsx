@@ -4,9 +4,6 @@ import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main3.mp4";
-import icon1 from "./assets/icon1.png";
-import icon2 from "./assets/icon2.png";
-import icon3 from "./assets/icon3.png";
 import "./styles/socials/Socials.css";
 
 const CHARS = [char1, char2, char3];
@@ -19,17 +16,13 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "github", label: "GITHUB", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "\uD83D\uDC1B", barIcon: icon1,
-    stats: [
-      { tag: "REP", value: "2",  color: "#6e40c9" },
-      { tag: "STG", value: "1",  color: "#bf94ff" },
-    ],
+    id: "github", label: "GITHUB", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "\uD83D\uDC1B",
   },
   {
-    id: "telegram", label: "TELEGRAM", handle: "@n0mad_guy", href: "https://t.me/n0mad_guy", icon: "\u2708\uFE0F", barIcon: icon2,
+    id: "telegram", label: "TELEGRAM", handle: "@n0mad_guy", href: "https://t.me/n0mad_guy", icon: "\u2708\uFE0F",
   },
   {
-    id: "discord", label: "DISCORD", handle: "n0mad_guy", href: "https://discord.gg/n0mad_guy", icon: "\uD83C\uDFCB\uFE0F", barIcon: icon3,
+    id: "discord", label: "DISCORD", handle: "n0mad_guy", href: "https://discord.gg/n0mad_guy", icon: "\uD83C\uDFCB\uFE0F",
   },
 ];
 
@@ -85,22 +78,6 @@ export default function Socials() {
                     <div className="sc-label">{item.label}</div>
                   </div>
                 </div>
-                {item.stats?.length > 0 && (
-                  <div className="sc-stats">
-                    {item.stats.map(s => (
-                      <div className="sc-stat" key={s.tag}>
-                        <div className="sc-stat-top">
-                          <span className="sc-stat-tag" style={{ color: s.color, borderColor: s.color }}>{s.tag}</span>
-                          <span className="sc-stat-num">{s.value}</span>
-                        </div>
-                        <div className="sc-stat-bars">
-                          <div className="sc-stat-bar-color" style={{ background: s.color }} />
-                          <div className="sc-stat-bar-black" />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
           </div>

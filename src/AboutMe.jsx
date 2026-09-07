@@ -4,9 +4,6 @@ import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main1.mp4";
-import icon1 from "./assets/icon1.png";
-import icon2 from "./assets/icon2.png";
-import icon3 from "./assets/icon3.png";
 import mainm from "./assets/mainm.jpeg";
 import mainm2 from "./assets/mainm2.jpeg";
 import mainf from "./assets/mainf.jpeg";
@@ -45,30 +42,9 @@ const ROLES = [
 ];
 
 const ITEMS = [
-  {
-    id: "about", label: "ABOUT ME", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "\uD83D\uDC1B", barIcon: icon1, bars: 0, newBars: [], counts: [],
-    links: [],
-    stats: [
-      { tag: "DEV", value: "2",  color: "#6e40c9" },
-      { tag: "PRJ", value: "1",  color: "#bf94ff" },
-    ],
-  },
-  {
-    id: "socials", label: "SOCIALS", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "\uD83D\uDC4B", barIcon: icon2, bars: 0, newBars: [], counts: [],
-    links: [],
-    stats: [
-      { tag: "REP", value: "2",  color: "#6e40c9" },
-      { tag: "STG", value: "1",  color: "#bf94ff" },
-    ],
-  },
-  {
-    id: "projects", label: "PROJECTS", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "\uD83D\uDCAA", barIcon: icon3, bars: 0, newBars: [], counts: [],
-    links: [],
-    stats: [
-      { tag: "NOCTRA", value: "1",  color: "#FF6B35" },
-      { tag: "PORTFOLIO", value: "1",  color: "#00C853" },
-    ],
-  },
+  { id: "about",    label: "ABOUT ME",  icon: "\uD83D\uDC1B" },
+  { id: "socials",  label: "SOCIALS",   icon: "\uD83D\uDC4B" },
+  { id: "projects", label: "PROJECTS",  icon: "\uD83D\uDCAA" },
 ];
 
 export default function AboutMe() {
