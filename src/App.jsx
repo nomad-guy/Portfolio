@@ -90,21 +90,28 @@ export default function App() {
       <AnimatedRoutes />
       <div style={{
         position: 'fixed',
-        bottom: 88,
+        bottom: 46,
         right: 28,
         zIndex: 9999,
         display: 'flex',
-        alignItems: 'center',
-        gap: 5,
-        color: muted ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.7)',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        gap: 4,
+        color: muted ? 'rgba(255,255,255,0.28)' : 'rgba(255,255,255,0.65)',
         fontSize: 11,
         fontFamily: 'Anton, sans-serif',
-        letterSpacing: 1,
+        letterSpacing: 2,
         transition: 'color 0.2s',
         pointerEvents: 'none',
       }}>
-        <span style={{ border: '1px solid rgba(255,255,255,0.15)', padding: '1px 5px', borderRadius: 3, fontSize: 10 }}>M</span>
-        {muted ? 'MUTED' : '♪ ON'}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+        }}>
+          <span style={{ border: '1px solid rgba(255,255,255,0.15)', padding: '1px 5px', borderRadius: 3, fontSize: 10 }}>M</span>
+          <span>{muted ? 'MUTED' : '♪ ON'}</span>
+        </div>
       </div>
     </>
   );
