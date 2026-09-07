@@ -91,20 +91,20 @@ export default function App() {
       <div style={{
         position: 'fixed',
         bottom: 52,
-        right: 18,
+        right: 28,
         zIndex: 9999,
         display: 'flex',
         alignItems: 'center',
-        gap: 5,
+        gap: 4,
         color: muted ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.65)',
-        fontSize: 11,
+        fontSize: 10,
         fontFamily: 'Anton, sans-serif',
         letterSpacing: 1,
         transition: 'color 0.2s',
         pointerEvents: 'none',
       }}>
         {muted ? 'MUTED' : '♪ ON'}
-        <span style={{ border: '1px solid rgba(255,255,255,0.12)', padding: '1px 5px', borderRadius: 3, fontSize: 10 }}>M</span>
+        <span style={{ border: '1px solid rgba(255,255,255,0.12)', padding: '1px 4px', borderRadius: 3, fontSize: 9 }}>M</span>
       </div>
     </>
   );
