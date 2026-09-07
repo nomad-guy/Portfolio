@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
+import BgVideo from "./components/shared/BgVideo";
 import bgVideo from "./assets/main1.mp4";
 import mainm from "./assets/mainm.jpeg";
 import mainm2 from "./assets/mainm2.jpeg";
@@ -19,19 +20,19 @@ const REVEAL_CONTENT = [
   },
   {
     upper: [
-      "Building this portfolio taught me more React in 2 weeks than a semester course.",
-      "I pick projects based on what scares me a little — that's where the growth is.",
-      "Every bug I fixed made the next one easier. Stacking wins.",
+      "I built Noctra because lossy streams felt wrong — it's lossless FLAC from the ground up.",
+      "Self-taught: I learn by shipping real things, not by following courses.",
+      "Currently deep in Flutter, ML, and agentic AI systems.",
     ],
-    lower: "dev reality checks",
+    lower: "what i'm into",
   },
   {
     upper: [
-      "I prototype fast and throw away code that doesn't earn its place.",
+      "Noctra ships on Android, Windows, Linux and iOS — one codebase.",
+      "AksharaEngine is my real-time bilingual lyrics engine for live subtitles.",
       "Good UX is invisible — if you notice it, something's wrong.",
-      "I'd rather build one thing people use than ten things nobody opens.",
     ],
-    lower: "how i work",
+    lower: "things i've built",
   },
 ];
 
@@ -76,7 +77,7 @@ export default function AboutMe() {
 
   return (
     <div id="menu-screen">
-      <video src={bgVideo} autoPlay loop muted playsInline />
+      <BgVideo src={bgVideo} />
       {revealed && <div key={`dim-${active}`} className="sc-dim" />}
       {revealed && (
         <div key={`panel-${active}`} className={`sc-reveal-panel${mounted ? " mounted" : ""}`}>
@@ -112,7 +113,8 @@ export default function AboutMe() {
             key={item.id}
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
             onClick={() => {
-              setActive(i);
+              if (active === i) setRevealed(true);
+              else setActive(i);
             }}
             onMouseEnter={() => {
               setActive(i);

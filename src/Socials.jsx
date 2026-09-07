@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
+import BgVideo from "./components/shared/BgVideo";
 import bgVideo from "./assets/main3.mp4";
 import "./styles/socials/Socials.css";
 
@@ -53,7 +54,7 @@ export default function Socials() {
 
   return (
     <div id="menu-screen">
-      <video src={bgVideo} autoPlay loop muted playsInline />
+      <BgVideo src={bgVideo} />
       <div className="sc-root" role="navigation">
         {ITEMS.map((item, i) => (
           <div

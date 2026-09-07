@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProjectsCardList } from "./components/projects/ProjectsCardList";
 import { ProjectsDetailPanel } from "./components/projects/ProjectsDetailPanel";
+import BgVideo from "./components/shared/BgVideo";
 import "./styles/projects/Projects.css";
 import "./styles/shared/DetailPanel.css";
 
@@ -51,6 +52,12 @@ export default function Projects({ src }) {
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [pinned, setPinned] = useState(false);
+
+  const unpin = () => {
+    setPinned(false);
+    setHovered(false);
+  };
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -59,8 +66,8 @@ export default function Projects({ src }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "ArrowUp") { setHovered(true); setActive((i) => Math.max(0, i - 1)); }
-      if (e.key === "ArrowDown") { setHovered(true); setActive((i) => Math.min(PROJECTS_DATA.length - 1, i + 1)); }
+      if (e.key === "ArrowUp") { setPinned(true); setActive((i) => Math.max(0, i - 1)); }
+      if (e.key === "ArrowDown") { setPinned(true); setActive((i) => Math.min(PROJECTS_DATA.length - 1, i + 1)); }
       if (e.key === "ArrowLeft") navigate(-1);
       if (e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
@@ -69,10 +76,12 @@ export default function Projects({ src }) {
   }, [navigate]);
 
   return (
-    <div id="menu-screen">
-      <video src={src} autoPlay loop muted playsInline preload="metadata" />
+    <div id="menu-screen" onClickCapture={(e) => {
+      if (!e.target.closest(".resume-stack") && !e.target.closest(".resume-detail-panel")) unpin();
+    }}>
+      <BgVideo src={src} />
       <div className="resume-entry-mask" aria-hidden="true">
-        <video className="resume-entry-video" src={src} autoPlay loop muted playsInline preload="metadata" />
+        <BgVideo src={src} className="resume-entry-video" />
       </div>
       <div className="resume-overlay">
         <ProjectsCardList
@@ -81,8 +90,9 @@ export default function Projects({ src }) {
           mounted={mounted}
           onSelect={setActive}
           onHoverChange={setHovered}
+          onPin={setPinned}
         />
-        {hovered && PROJECTS_DATA.map((proj, idx) => (
+        {(hovered || pinned) && PROJECTS_DATA.map((proj, idx) => (
           active === idx && <ProjectsDetailPanel key={proj.title} data={PROJECTS_DATA} active={active} index={idx} />
         ))}
         <div className={`resume-hints${mounted ? "" : " muted"}`}>

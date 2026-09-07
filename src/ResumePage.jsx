@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ResumeCardList } from "./components/resume/ResumeCardList";
 import { ResumeDetailPanel } from "./components/resume/ResumeDetailPanel";
+import BgVideo from "./components/shared/BgVideo";
 import "./styles/resume/ResumePage.css";
 import "./styles/shared/DetailPanel.css";
 
@@ -69,6 +70,12 @@ export default function ResumePage({ src }) {
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [pinned, setPinned] = useState(false);
+
+  const unpin = () => {
+    setPinned(false);
+    setHovered(false);
+  };
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -77,8 +84,8 @@ export default function ResumePage({ src }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "ArrowUp") { setHovered(true); setActive((i) => Math.max(0, i - 1)); }
-      if (e.key === "ArrowDown") { setHovered(true); setActive((i) => Math.min(SKILL_DATA.length - 1, i + 1)); }
+      if (e.key === "ArrowUp") { setPinned(true); setActive((i) => Math.max(0, i - 1)); }
+      if (e.key === "ArrowDown") { setPinned(true); setActive((i) => Math.min(SKILL_DATA.length - 1, i + 1)); }
       if (e.key === "ArrowLeft") navigate(-1);
       if (e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
@@ -87,10 +94,12 @@ export default function ResumePage({ src }) {
   }, [navigate]);
 
   return (
-    <div id="menu-screen">
-      <video src={src} autoPlay loop muted playsInline preload="metadata" />
+    <div id="menu-screen" onClickCapture={(e) => {
+      if (!e.target.closest(".resume-stack") && !e.target.closest(".resume-detail-panel")) unpin();
+    }}>
+      <BgVideo src={src} />
       <div className="resume-entry-mask" aria-hidden="true">
-        <video className="resume-entry-video" src={src} autoPlay loop muted playsInline preload="metadata" />
+        <BgVideo src={src} className="resume-entry-video" />
       </div>
       <div className="resume-overlay">
         <ResumeCardList
@@ -99,8 +108,9 @@ export default function ResumePage({ src }) {
           mounted={mounted}
           onSelect={setActive}
           onHoverChange={setHovered}
+          onPin={setPinned}
         />
-        {hovered && SKILL_DATA.map((skill, idx) => (
+        {(hovered || pinned) && SKILL_DATA.map((skill, idx) => (
           active === idx && <ResumeDetailPanel key={skill.id} data={SKILL_DATA} active={active} index={idx} />
         ))}
         <div className={`resume-hints${mounted ? "" : " muted"}`}>

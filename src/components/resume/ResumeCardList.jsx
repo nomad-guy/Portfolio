@@ -1,4 +1,4 @@
-export function ResumeCardList({ data, active, mounted, onSelect, onHoverChange }) {
+export function ResumeCardList({ data, active, mounted, onSelect, onHoverChange, onPin }) {
   return (
     <div
       className="resume-stack"
@@ -14,7 +14,12 @@ export function ResumeCardList({ data, active, mounted, onSelect, onHoverChange 
             onSelect(index);
             onHoverChange?.(true);
           }}
-          onClick={() => onSelect(index)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect(index);
+            onHoverChange?.(true);
+            onPin?.(true);
+          }}
         >
           <div className="resume-card">
             <div className="resume-badge">

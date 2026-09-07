@@ -28,3 +28,63 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+/* route lazy-load fallback */
+.route-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, rgba(10, 30, 90, 0.55), rgba(0, 0, 10, 0.9));
+  z-index: 60;
+}
+.route-loader span {
+  font-family: 'Anton', sans-serif;
+  font-size: 34px;
+  letter-spacing: 10px;
+  color: #d5fdff;
+  animation: route-loader-pulse 0.9s ease-in-out infinite;
+}
+@keyframes route-loader-pulse {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+/* shared video buffering cover */
+.bg-video-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(160deg, #071031 0%, #050b20 55%, #0a1d56 100%);
+}
+.bg-video-loader::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 999px;
+  border: 3px solid rgba(133, 244, 255, 0.15);
+  border-top-color: #9cf7ff;
+  animation: route-loader-spin 0.8s linear infinite;
+}
+@keyframes route-loader-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* mobile: scale the fixed game-style UI to fit small viewports */
+@media (max-width: 820px) {
+  html, body { overflow: hidden; }
+}
+@media (max-width: 700px) {
+  #menu-screen { zoom: 0.55; }
+}
+@media (max-width: 500px) {
+  #menu-screen { zoom: 0.42; }
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  #menu-screen { zoom: 0.78; }
+}
