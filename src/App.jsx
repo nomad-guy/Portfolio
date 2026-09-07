@@ -51,6 +51,7 @@ function AnimatedRoutes() {
         <Route path="/sideproj" element={
           <PageTransition><Projects src={main3} /></PageTransition>
         } />
+        <Route path="*" element={null} />
       </Routes>
     </AnimatePresence>
   );
