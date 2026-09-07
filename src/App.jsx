@@ -90,12 +90,12 @@ export default function App() {
       <AnimatedRoutes />
       <div style={{
         position: 'fixed',
-        bottom: 18,
+        bottom: 52,
         right: 18,
         zIndex: 9999,
         display: 'flex',
         alignItems: 'center',
-        gap: 6,
+        gap: 5,
         color: muted ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.65)',
         fontSize: 11,
         fontFamily: 'Anton, sans-serif',
