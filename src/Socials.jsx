@@ -145,9 +145,13 @@ export default function Socials() {
         <div
           className={`sc-info-bar-wrap${activeInfoBar === i ? " selected" : ""}`}
           key={`bar-${active}-${i}`}
-          style={{ top: `${155 + i * 52}px`, animationDelay: `${i * 50}ms` }}
-          onClick={() => setActiveInfoBar(i)}
+          style={{ top: `${155 + i * 52}px`, animationDelay: `${i * 50}ms`, cursor: "pointer" }}
+          onClick={() => {
+            setActiveInfoBar(i);
+            window.open("https://" + ITEMS[active].links[i], "_blank");
+          }}
           onMouseEnter={() => setActiveInfoBar(i)}
+          title={ITEMS[active].links[i]}
         >
           {ITEMS[active].newBars.includes(i) && (
             <img className="sc-info-bar-new" src={newsign} alt="" />
@@ -155,8 +159,6 @@ export default function Socials() {
           <div className="sc-info-bar">
             <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
             <span className="sc-info-bar-text">{ITEMS[active].links[i]}</span>
-            <span className="sc-info-bar-box">{ITEMS[active].infoBarLabel}</span>
-            <span className="sc-info-bar-count">{ITEMS[active].counts[i]}</span>
           </div>
         </div>
       ))}
