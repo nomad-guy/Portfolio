@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
+
+.resume-entry-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  overflow: hidden;
+  background: #0047FF;
+  clip-path: circle(0 at 50% 50%);
+  animation: resume-entry-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+.resume-entry-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes resume-entry-reveal {
+  from { clip-path: circle(0 at 50% 50%); }
+  to { clip-path: circle(150vmax at 50% 50%); }
+}
+
+.resume-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.resume-stack {
+  position: absolute;
+  top: 9vh;
+  left: 2.8vw;
+  width: min(47vw, 720px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+  transform: scale(0.9);
+  transform-origin: top left;
+}
+
+.resume-list-tag {
+  font-family: 'Anton', sans-serif;
+  font-size: 92px;
+  line-height: 0.9;
+  color: #f6fbff;
+  letter-spacing: 2px;
+  margin: 0 0 6px 12px;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.18);
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.resume-list-tag.mounted {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.resume-card-wrap {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: all;
+  cursor: pointer;
+}
+.resume-card-wrap.mounted {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.resume-card {
+  position: relative;
+  height: 112px;
+  background: #10185f;
+  clip-path: polygon(0 0, 97% 0, 100% 100%, 3% 100%);
+  box-shadow: 0 8px 0 rgba(5, 13, 59, 0.85);
+  transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  overflow: visible;
+}
+.resume-card-wrap.active .resume-card {
+  background: #ffffff;
+  box-shadow: 10px 8px 0 #0047FF;
+  transform: translateX(6px);
+}
+
+.resume-card-inner {
+  position: absolute;
+  inset: 0;
+  padding: 14px 22px 14px 62px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.resume-badge {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 56px;
+  height: 70px;
+  background: #0b113d;
+  border: 3px solid #9cf7ff;
+  clip-path: polygon(14% 0, 100% 0, 84% 100%, 0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-8deg);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.28);
+  transition: background 0.22s ease, border-color 0.22s ease;
+}
+.resume-badge-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: #d2fdff;
+  letter-spacing: 1px;
+  transform: rotate(8deg);
+}
+.resume-card-wrap.active .resume-badge {
+  background: #000;
+  border-color: #000;
+}
+.resume-card-wrap.active .resume-badge-text {
+  color: #fff;
+}
+
+.resume-title {
+  font-family: 'Anton', sans-serif;
+  font-size: 56px;
+  line-height: 0.9;
+  letter-spacing: 1px;
+  color: #a5f6ff;
+  transition: color 0.22s ease;
+}
+.resume-card-wrap.active .resume-title {
+  color: #000;
+}
+
+.resume-rank {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.resume-rank-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: #9ffbff;
+  transition: color 0.22s ease;
+}
+.resume-rank-number {
+  font-family: 'Anton', sans-serif;
+  font-size: 70px;
+  line-height: 0.82;
+  color: #9ffbff;
+  transition: color 0.22s ease;
+}
+.resume-card-wrap.active .resume-rank-label,
+.resume-card-wrap.active .resume-rank-number {
+  color: #000;
+}
+
+.resume-subtitle-bar {
+  position: absolute;
+  left: 64px;
+  right: 14px;
+  bottom: 12px;
+  height: 34px;
+  background: #85f4ff;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  transition: background 0.22s ease;
+}
+.resume-card-wrap.active .resume-subtitle-bar {
+  background: #000;
+}
+
+.resume-subtitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #041238;
+  transition: color 0.22s ease;
+}
+.resume-card-wrap.active .resume-subtitle {
+  color: #fff;
+}
+
+.resume-hints {
+  position: fixed;
+  bottom: 20px;
+  right: 28px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  font-family: 'Anton', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.28);
+  transition: opacity 0.5s ease 0.9s;
+}
+.resume-hints.muted { opacity: 0; }
+.resume-hints-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.resume-hints-key {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 11px;
+}
+.resume-hints-key.m {
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 1px 5px;
+  font-size: 10px;
+}
+.resume-hints-label.m {
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  letter-spacing: 2;
+}
