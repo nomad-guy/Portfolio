@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ProjectsCardList } from "./components/projects/ProjectsCardList";
 import { ProjectsDetailPanel } from "./components/projects/ProjectsDetailPanel";
 import "./styles/projects/Projects.css";
+import "./styles/shared/DetailPanel.css";
 
 
 const PROJECTS_DATA = [

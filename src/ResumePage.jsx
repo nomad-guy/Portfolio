@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ResumeCardList } from "./components/resume/ResumeCardList";
 import { ResumeDetailPanel } from "./components/resume/ResumeDetailPanel";
 import "./styles/resume/ResumePage.css";
+import "./styles/shared/DetailPanel.css";
 
 const SKILL_DATA = [
   {
