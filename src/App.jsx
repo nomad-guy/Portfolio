@@ -62,7 +62,7 @@ function AnimatedRoutes() {
             <Suspense fallback={<ScreenLoader />}><Projects src={main3} /></Suspense>
           </PageTransition>
         } />
-        <Route path="*" element={null} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>
   );
@@ -80,7 +80,6 @@ export default function App() {
             <MenuScreen />
           </PageTransition>
         } />
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <AnimatedRoutes />
     </>
