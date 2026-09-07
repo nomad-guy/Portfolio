@@ -2,6 +2,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import menuVideo from './assets/Mainn.mp4'
 import main2 from './assets/main2.mp4'
+import bgm from './assets/bgm.mp3'
 import P3Menu from './P3Menu'
 import VideoPage from './VideoPage'
 import ResumePage from './ResumePage'
@@ -17,6 +18,7 @@ function MenuScreen() {
   return (
     <div id="menu-screen">
       <video src={menuVideo} autoPlay loop muted playsInline />
+      <audio src={bgm} autoPlay loop />
       <P3Menu onNavigate={(page) => navigate(`/${page}`)} />
     </div>
   )
