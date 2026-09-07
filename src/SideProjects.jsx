@@ -309,18 +309,18 @@ export default function SideProjects({ src }) {
 
         .resume-detail-panel {
           position: absolute;
-          top: 9.5vh;
-          right: 4.5vw;
-          width: min(39vw, 620px);
-          min-height: 74vh;
+          top: 9vh;
+          right: 4vw;
+          width: min(42vw, 680px);
+          min-height: 70vh;
           z-index: 12;
-          padding: 22px 24px 24px 24px;
+          padding: 20px 22px 22px 22px;
           background: linear-gradient(180deg, rgba(214, 50, 50, 0.96) 0%, rgba(10, 10, 30, 0.97) 100%);
           clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
           box-shadow:
             inset 0 0 0 1px rgba(255, 100, 100, 0.16),
             16px 16px 0 rgba(0, 6, 30, 0.55);
-          overflow: hidden;
+          overflow: visible;
         }
         .resume-detail-panel::before {
           content: "";
@@ -407,19 +407,12 @@ export default function SideProjects({ src }) {
           clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
         }
         .resume-detail-bottom {
-          position: absolute;
-          top: 9.5vh;
-          right: 4.5vw;
-          width: min(39vw, 620px);
-          bottom: 0;
-          z-index: 12;
-          padding: 22px 24px 24px 24px;
-          background: linear-gradient(180deg, rgba(214, 50, 50, 0.96) 0%, rgba(10, 10, 30, 0.97) 100%);
-          clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
-          box-shadow:
-            inset 0 0 0 1px rgba(255, 100, 100, 0.16),
-            16px 16px 0 rgba(0, 6, 30, 0.55);
-          overflow: hidden;
+          position: relative;
+          margin-top: 18px;
+          padding: 18px;
+          background: rgba(10, 10, 30, 0.97);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+          box-shadow: inset 0 0 0 1px rgba(255, 100, 100, 0.16);
         }
         .resume-detail-bottom-title {
           font-family: 'Bebas Neue', sans-serif;
