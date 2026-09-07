@@ -180,7 +180,7 @@ export default function ResumePage({ src }) {
         }
         .resume-card-wrap.active .resume-card {
           background: #ffffff;
-          box-shadow: 10px 8px 0 #d63232;
+          box-shadow: 10px 8px 0 #0047FF;
           transform: translateX(6px);
         }
 

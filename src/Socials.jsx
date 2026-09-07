@@ -21,6 +21,7 @@ const ITEMS = [
   {
     id: "github", label: "GITHUB", handle: "@nomad-guy", href: "https://github.com/nomad-guy", icon: "🐙", barIcon: icon1, bars: 0, newBars: [], counts: [],
     links: ["github.com/nomad-guy"],
+    infoBarLabel: "REPOS",
     stats: [
       { tag: "REP", value: "120", color: "#6e40c9" },
       { tag: "STG", value: "34",  color: "#bf94ff" },
@@ -29,6 +30,7 @@ const ITEMS = [
   {
     id: "telegram", label: "TELEGRAM", handle: "@n0mad_guy", href: "https://t.me/n0mad_guy", icon: "✈️", barIcon: icon2, bars: 3, newBars: [0, 2], counts: ["1.2K", "412", "89"],
     links: ["t.me/n0mad_guy", "t.me/n0mad_guy/updates", "t.me/n0mad_guy/contact"],
+    infoBarLabel: "MEMBERS",
     stats: [
       { tag: "SUB", value: "1.2K", color: "#26a5e0" },
       { tag: "MSG", value: "342",  color: "#f77737" },
@@ -37,6 +39,7 @@ const ITEMS = [
   {
     id: "discord", label: "DISCORD", handle: "n0mad_guy", href: "https://discord.gg/n0mad_guy", icon: "🎮", barIcon: icon3, bars: 4, newBars: [0, 3], counts: ["5.1K", "2.8K", "1.2K", "412"],
     links: ["discord.gg/n0mad_guy", "discord.gg/n0mad_guy/events", "discord.gg/n0mad_guy/roles", "discord.gg/n0mad_guy/about"],
+    infoBarLabel: "LINKS",
     stats: [
       { tag: "MEM", value: "5.1K", color: "#5865f2" },
       { tag: "ONL", value: "342",  color: "#5865f2" },
@@ -584,7 +587,7 @@ export default function Socials() {
           <div className="sc-info-bar">
             <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
             <span className="sc-info-bar-text">{ITEMS[active].links[i].slice(0, 10)}...</span>
-            <span className="sc-info-bar-box">VIEWS</span>
+            <span className="sc-info-bar-box">{ITEMS[active].infoBarLabel || 'VIEWS'}</span>
             <span className="sc-info-bar-count">{ITEMS[active].counts[i]}</span>
           </div>
         </div>
