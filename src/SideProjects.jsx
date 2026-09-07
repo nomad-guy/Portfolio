@@ -15,67 +15,35 @@ const ITEMS = [
 
 const PROJECTS_DETAIL = [
   {
-    title: "PERSONA3 WEBSITE",
-    progress: "5/5",
+    title: "NOCTRA",
+    progress: "1/1",
     rows: [
-      { index: "01", title: "React 19 + Vite + React Router", status: "Live" },
+      { index: "01", title: "Autonomous Audiophile Music Platform", status: "Live" },
+      { index: "02", title: "Lossless Hi-Res FLAC Streaming", status: "Live" },
+      { index: "03", title: "Real-time Bilingual Lyrics (AksharaEngine)", status: "Live" },
+      { index: "04", title: "IEM DSP Tuning & Triple Noir Design", status: "Live" },
+    ],
+    bullets: [
+      "- Autonomous privacy-sovereign music platform",
+      "- Lossless Hi-Res FLAC streaming on Android, Windows, Linux & iOS",
+      "- AksharaEngine real-time bilingual lyrics subtitles",
+      "- IEM DSP tuning with Triple Noir design language",
+    ],
+  },
+  {
+    title: "PORTFOLIO",
+    progress: "1/1",
+    rows: [
+      { index: "01", title: "React 19 + Vite + React Router v7", status: "Live" },
       { index: "02", title: "Framer Motion Page Transitions", status: "Live" },
       { index: "03", title: "Persona 3 Aesthetic UI Design", status: "Live" },
-      { index: "04", title: "Custom Video Backgrounds Per Page", status: "Live" },
+      { index: "04", title: "GitHub API Repo Integration", status: "Live" },
     ],
     bullets: [
-      "- React 19 + Vite with React Router v7 routing",
+      "- React 19 with Vite and React Router v7",
       "- Framer Motion animated page transitions",
       "- Persona 3 inspired UI with custom card designs",
-      "- Different video background on each page",
-    ],
-  },
-  {
-    title: "PORTFOLIO REBUILD",
-    progress: "4/5",
-    rows: [
-      { index: "01", title: "Responsive Layout System", status: "Live" },
-      { index: "02", title: "Custom Card Components", status: "Live" },
-      { index: "03", title: "CSS Animations & Effects", status: "Live" },
-      { index: "04", title: "Theme Color System", status: "WIP" },
-    ],
-    bullets: [
-      "- Fully responsive layout for all screen sizes",
-      "- Reusable card components with clip-path designs",
-      "- Smooth CSS transitions and keyframe animations",
-      "- Consistent color palette across all pages",
-    ],
-  },
-  {
-    title: "STREAM OVERLAY",
-    progress: "3/5",
-    rows: [
-      { index: "01", title: "OBS Webhook Integration", status: "Live" },
-      { index: "02", title: "Real-time Viewer Stats", status: "Live" },
-      { index: "03", title: "Scene Transition Effects", status: "WIP" },
-      { index: "04", title: "Custom Overlay Themes", status: "WIP" },
-    ],
-    bullets: [
-      "- OBS webhook integration for live data",
-      "- Real-time viewer count and stats display",
-      "- Animated scene transition overlays",
-      "- Multiple theme options for different vibes",
-    ],
-  },
-  {
-    title: "GAME MOD TOOLS",
-    progress: "2/5",
-    rows: [
-      { index: "01", title: "Scripting Automation", status: "Live" },
-      { index: "02", title: "Toolchain Setup", status: "Live" },
-      { index: "03", title: "Mod Packaging", status: "WIP" },
-      { index: "04", title: "Distribution Pipeline", status: "WIP" },
-    ],
-    bullets: [
-      "- Python/JS scripting for mod automation",
-      "- Custom toolchain for building mods",
-      "- Automated mod packaging pipeline",
-      "- Distribution and versioning system",
+      "- Live GitHub repos fetched from API",
     ],
   },
 ];
@@ -437,9 +405,9 @@ export default function SideProjects({ src }) {
       <div className="resume-overlay">
         <div className="resume-stack">
           <div className={`resume-list-tag${mounted ? " mounted" : ""}`}>PROJECTS</div>
-          {ITEMS.map((item, index) => (
+          {PROJECTS_DETAIL.map((proj, index) => (
             <div
-              key={item.id}
+              key={proj.title}
               className={`resume-card-wrap${active === index ? " active" : ""}${mounted ? " mounted" : ""}`}
               style={{ transitionDelay: `${index * 55}ms` }}
               onMouseEnter={() => {
@@ -451,17 +419,17 @@ export default function SideProjects({ src }) {
             >
               <div className="resume-card">
                 <div className="resume-badge">
-                  <div className="resume-badge-text">{item.badge}</div>
+                  <div className="resume-badge-text">{proj.badge}</div>
                 </div>
                 <div className="resume-card-inner">
-                  <div className="resume-title">{item.title}</div>
+                  <div className="resume-title">{proj.title}</div>
                   <div className="resume-rank">
                     <div className="resume-rank-label">RANK</div>
-                    <div className="resume-rank-number">{item.rank}</div>
+                    <div className="resume-rank-number">{proj.rank}</div>
                   </div>
                 </div>
                 <div className="resume-subtitle-bar">
-                  <div className="resume-subtitle">{item.subtitle}</div>
+                  <div className="resume-subtitle">{proj.subtitle}</div>
                 </div>
               </div>
             </div>
